@@ -1,5 +1,5 @@
 <?php
-    $dsn = 'mysql:host=localhost;dbname=d00213436';
+    $dsn = 'mysql:host=localhost;dbname=blood_donation_system';
     $username = 'root';
     $password = '';
 

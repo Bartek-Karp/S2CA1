@@ -14,7 +14,7 @@ function get_donors_by_blood($blood_id) {
     global $db;
     $query = 'SELECT * FROM donors
               WHERE donors.bloodID = :blood_id
-              ORDER BY productID';
+              ORDER BY donorID';
     $statement = $db->prepare($query);
     $statement->bindValue(":blood_id", $blood_id);
     $statement->execute();
@@ -42,7 +42,7 @@ function delete_donor($donor_id) {
     $statement = $db->prepare($query);
     $statement->bindValue(':donor_id', $donor_id);
     $statement->execute();
-    $statement->closeCursor();
+   $statement->closeCursor();
 }
 
 function add_donor($blood_id, $name, $number, $age) {
@@ -52,14 +52,14 @@ function add_donor($blood_id, $name, $number, $age) {
               VALUES
                  (:blood_id, :name, :number, :age)';
     $statement = $db->prepare($query);
-    $statement->bindValue(':category_id', $blood_id);
+    $statement->bindValue(':blood_id', $blood_id);
     $statement->bindValue(':name', $name);
     $statement->bindValue(':number', $number);
     $statement->bindValue(':age', $age);
     $statement->execute();
     $statement->closeCursor();
 }
-
+//
 function update_donor($donor_id, $blood_id, $name, $number, $age) {
     global $db;
     $query = 'UPDATE donors
