@@ -1,48 +1,40 @@
-<?php
-require('../model/database.php');
-require('../model/donor_db.php');
-require('../model/bloodGroup_db.php');
+<?php include '../view/header.php'; ?>
+<main>
 
-$action = filter_input(INPUT_POST, 'action');
-if ($action == NULL) {
-    $action = filter_input(INPUT_GET, 'action');
-    if ($action == NULL) {
-        $action = 'list_donors';
-    }
-} 
+    <h1>Category List</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>&nbsp;</th>
+        </tr>
+        <?php foreach ($bloodgroup as $blood) : ?>
+        <tr>
+            <td><?php echo $blood['bloodType']; ?></td>
+            <td>
+                <form id="delete_donor_form"
+                      action="index.php" method="post">
+                    <input type="hidden" name="action" value="delete_blood">
+                    <input type="hidden" name="blood_id"
+                           value="<?php echo $blood['bloodID']; ?>">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+    <br />
 
-if ($action == 'list_donors') {
-    $blood_id = filter_input(INPUT_GET, 'blood_id', 
-            FILTER_VALIDATE_INT);
-    if ($blood_id == NULL || $blood_id == FALSE) {
-        $blood_id = 1;
-    }
-    $bloodgroup = get_bloodgroup();
-    $blood_type = get_blood_type($blood_id);
-    $donors = get_donors_by_blood($blood_id);
+    <h2>Add Blood Type</h2>
+    <form id="add_blood_form"
+          action="index.php" method="post">
+        <input type="hidden" name="action" value="add_blood">
 
-    include('donor_list.php');
-} else if ($action == 'view_donor') {
-    $donor_id = filter_input(INPUT_GET, 'donor_id', 
-            FILTER_VALIDATE_INT);   
-    if ($donor_id == NULL || $donor_id == FALSE) {
-        $error = 'Missing or incorrect donor id.';
-        include('../errors/error.php');
-    } else {
-        $bloodgroup = get_bloodgroup();
-        $donor = get_donor($donor_id);
+        <label>Type:</label>
+        <input type="input" name="name">
+        <input type="submit" value="Add">
+    </form>
 
-        // Get donor data
-        $name = $donor['fullName'];
-        $number = $donor['phoneNumber'];
-        $age = $donor['age'];
+    <p><a href="index.php?action=list_donors">List Donors</a></p>
 
-        
-        // Get image URL and alternate text
-        $image_filename = '../images/' . $code . '.png';
-        $image_alt = 'Image: ' . $code . '.png';
-
-        include('donor_view.php');
-    }
-}
-?>
+</main>
+<?php include '../view/footer.php'; ?>

@@ -6,9 +6,9 @@
         <li>
             <a href="donor_manager">Donor Manager</a>
         </li>
-<!--        <li>
+        <li>
             <a href="donor_catalog">Donor Catalog</a>
-        </li>-->
+        </li>
     </ul>
 </main>
 <?php include 'view/footer.php'; ?>

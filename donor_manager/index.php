@@ -19,7 +19,7 @@ if ($action == 'list_donors') {
         $blood_id = 1;
     }
     
-    // Get donor and category data
+    // Get donor and blood data
     $blood_type = get_blood_type($blood_id);
     $bloodgroup = get_bloodgroup();
     $donors_blood = get_donors_by_blood($blood_id);
@@ -50,7 +50,7 @@ if ($action == 'list_donors') {
     if ($donor_id == NULL || $donor_id == FALSE || $blood_id == NULL || 
             $blood_id == FALSE || $name == NULL || $number == NULL || 
             $age == NULL || age == FALSE) {
-        $error = "Invalid product data. Check all fields and try again.";
+        $error = "Invalid donor data. Check all fields and try again.";
         include('../errors/error.php');
     } else {
         update_donor($donor_id, $blood_id, $name, $number, $age);
@@ -65,7 +65,7 @@ if ($action == 'list_donors') {
             FILTER_VALIDATE_INT);
     if ($blood_id == NULL || $blood_id == FALSE ||
             $donor_id == NULL || $donor_id == FALSE) {
-        $error = "Missing or incorrect donor id or category id.";
+        $error = "Missing or incorrect donor id or blood id.";
         include('../errors/error.php');
     } else { 
         delete_donor($donor_id);
@@ -100,12 +100,12 @@ if ($action == 'list_donors') {
         include('../errors/error.php');
     } else {
         add_blood($name);
-        header('Location: .?action=list_bloodgroup');  // display the Category List page
+        header('Location: .?action=list_bloodgroup');  // display the Blood List page
     }
 } else if ($action == 'delete_blood') {
     $blood_id = filter_input(INPUT_POST, 'blood_id', 
             FILTER_VALIDATE_INT);
     delete_blood($blood_id);
-    header('Location: .?action=list_bloodgroup');      // display the Category List page
+    header('Location: .?action=list_bloodgroup');      // display the Blood List page
 }
 ?>
