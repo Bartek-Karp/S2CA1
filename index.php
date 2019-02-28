@@ -7,7 +7,10 @@
             <a href="donor_manager">Donor Manager</a>
         </li>
         <li>
-            <a href="donor_catalog">Donor Catalog</a>
+            <a href="donor_catalog">Blood Types</a>
+        </li>
+        <li>
+            <a href="venue_manager">Venues</a>
         </li>
     </ul>
 </main>

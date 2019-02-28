@@ -20,7 +20,7 @@
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
             </tr>
-            <?php foreach ($donors as $donor) : ?>
+            <?php foreach ($donors_blood as $donor) : ?>
             <tr>
                 <td><?php echo $donor['fullName']; ?></td>
                 <td><?php echo $donor['phoneNumber']; ?></td>

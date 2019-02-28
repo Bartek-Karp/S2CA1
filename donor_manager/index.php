@@ -34,7 +34,8 @@ if ($action == 'list_donors') {
         $error = "Missing or incorrect donor id.";
         include('../errors/error.php');
     } else { 
-        $donor = get_donor(donor_id);
+        $donor = get_donor($donor_id);
+        $bloodgroup = get_bloodgroup();
         include('donor_edit.php');
     }
 } else if ($action == 'update_donor') {

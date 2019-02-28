@@ -5,12 +5,14 @@
 
         <input type="hidden" name="action" value="update_donor">
 
-        <input type="hidden" name="donor_id"
-               value="<?php echo $donor['donorID']; ?>">
-
-        <label>Blood ID:</label>
-        <input type="blood_id" name="blood_id"
-               value="<?php echo $donor['donorID']; ?>">
+        <label>Blood Type:</label>
+        <select name="blood_id">
+            <?php foreach ($bloodgroup as $blood) : ?>
+                <option value="<?php echo $blood['bloodID']; ?>">
+                    <?php echo $blood['bloodType']; ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
         <br>
 
         <label>Full Name:</label>
