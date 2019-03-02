@@ -4,7 +4,7 @@
     <form action="index.php" method="post" id="add_venue_form">
         <input type="hidden" name="action" value="add_venue">
 
-        
+
         <label>Location:</label>
         <input type="input" name="location">
         <br>

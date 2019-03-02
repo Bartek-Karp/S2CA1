@@ -1,4 +1,5 @@
 <?php
+
 require('../model/database.php');
 require('../model/donor_db.php');
 require('../model/bloodGroup_db.php');
@@ -9,11 +10,10 @@ if ($action == NULL) {
     if ($action == NULL) {
         $action = 'list_donors';
     }
-} 
+}
 
 if ($action == 'list_donors') {
-    $blood_id = filter_input(INPUT_GET, 'blood_id', 
-            FILTER_VALIDATE_INT);
+    $blood_id = filter_input(INPUT_GET, 'blood_id', FILTER_VALIDATE_INT);
     if ($blood_id == NULL || $blood_id == FALSE) {
         $blood_id = 1;
     }
@@ -23,8 +23,7 @@ if ($action == 'list_donors') {
 
     include('donor_list.php');
 } else if ($action == 'view_donor') {
-    $donor_id = filter_input(INPUT_GET, 'donor_id', 
-            FILTER_VALIDATE_INT);   
+    $donor_id = filter_input(INPUT_GET, 'donor_id', FILTER_VALIDATE_INT);
     if ($donor_id == NULL || $donor_id == FALSE) {
         $error = 'Missing or incorrect donor id.';
         include('../errors/error.php');

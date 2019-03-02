@@ -50,7 +50,7 @@
         <p><a href="?action=list_bloodgroup">List Blood Groups</a></p>
         <br>
         <p> <a href="../index.php">Menu</a></p>
-        
+
     </section>
 
 </main>

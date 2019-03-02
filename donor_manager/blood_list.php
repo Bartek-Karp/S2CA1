@@ -8,18 +8,18 @@
             <th>&nbsp;</th>
         </tr>
         <?php foreach ($bloodgroup as $blood) : ?>
-        <tr>
-            <td><?php echo $blood['bloodType']; ?></td>
-            <td>
-                <form id="delete_donor_form"
-                      action="index.php" method="post">
-                    <input type="hidden" name="action" value="delete_blood">
-                    <input type="hidden" name="blood_id"
-                           value="<?php echo $blood['bloodID']; ?>">
-                    <input type="submit" value="Delete">
-                </form>
-            </td>
-        </tr>
+            <tr>
+                <td><?php echo $blood['bloodType']; ?></td>
+                <td>
+                    <form id="delete_donor_form"
+                          action="index.php" method="post">
+                        <input type="hidden" name="action" value="delete_blood">
+                        <input type="hidden" name="blood_id"
+                               value="<?php echo $blood['bloodID']; ?>">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
         <?php endforeach; ?>
     </table>
     <br />
@@ -36,7 +36,7 @@
 
     <p><a href="index.php?action=list_donors">List Donors</a></p>
     <br>
-        <p> <a href="../index.php">Menu</a></p>
+    <p> <a href="../index.php">Menu</a></p>
 
 </main>
 <?php include '../view/footer.php'; ?>

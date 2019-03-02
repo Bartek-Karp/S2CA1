@@ -1,4 +1,5 @@
 <?php
+
 function get_donors() {
     global $db;
     $query = 'SELECT * FROM donors
@@ -42,7 +43,7 @@ function delete_donor($donor_id) {
     $statement = $db->prepare($query);
     $statement->bindValue(':donor_id', $donor_id);
     $statement->execute();
-   $statement->closeCursor();
+    $statement->closeCursor();
 }
 
 function add_donor($blood_id, $name, $number, $age) {
@@ -59,6 +60,7 @@ function add_donor($blood_id, $name, $number, $age) {
     $statement->execute();
     $statement->closeCursor();
 }
+
 //
 //function update_donor($donor_id, $blood_id, $name, $number, $age) {
 //    global $db;
@@ -81,8 +83,7 @@ function add_donor($blood_id, $name, $number, $age) {
 
 
 
-function update_donor($donor_id, $blood_id, $name, $number, $age)
-{
+function update_donor($donor_id, $blood_id, $name, $number, $age) {
     global $db;
     $query = 'UPDATE donors
               SET bloodID = :blood_id,
@@ -99,8 +100,6 @@ function update_donor($donor_id, $blood_id, $name, $number, $age)
     $statement->execute();
     $statement->closeCursor();
 }
-
-
 ?>
 
 <!--function update_room($room_id, $category_id, $Rnum, $Rname, $Drate) {

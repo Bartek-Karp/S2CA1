@@ -6,11 +6,11 @@
 
         <label>Blood Type:</label>
         <select name="blood_id">
-        <?php foreach ( $bloodgroup as $blood ) : ?>
-            <option value="<?php echo $blood['bloodID']; ?>">
-                <?php echo $blood['bloodType']; ?>
-            </option>
-        <?php endforeach; ?>
+            <?php foreach ($bloodgroup as $blood) : ?>
+                <option value="<?php echo $blood['bloodID']; ?>">
+                    <?php echo $blood['bloodType']; ?>
+                </option>
+            <?php endforeach; ?>
         </select>
         <br>
 

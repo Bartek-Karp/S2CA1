@@ -6,7 +6,7 @@
         <input type="hidden" name="action" value="update_venue">
 
         <input type="hidden" name="action" value="venue_id">
-        
+
         <label>Location:</label>
         <input type="input" name="location"
                value="<?php echo $venue['location']; ?>">

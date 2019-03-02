@@ -1,22 +1,23 @@
 <?php
+
 function get_bloodgroup() {
     global $db;
     $query = 'SELECT * FROM bloodgroup
               ORDER BY bloodID';
     $statement = $db->prepare($query);
     $statement->execute();
-    return $statement; 
+    return $statement;
 }
 
 function get_blood_type($blood_id) {
     global $db;
     $query = 'SELECT * FROM bloodgroup
-              WHERE bloodID = :blood_id';    
+              WHERE bloodID = :blood_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':blood_id', $blood_id);
-    $statement->execute();    
+    $statement->execute();
     $blood = $statement->fetch();
-    $statement->closeCursor();    
+    $statement->closeCursor();
     $blood_type = $blood['bloodType'];
     return $blood_type;
 }
@@ -28,7 +29,7 @@ function add_blood($type) {
     $statement = $db->prepare($query);
     $statement->bindValue(':type', $type);
     $statement->execute();
-    $statement->closeCursor();    
+    $statement->closeCursor();
 }
 
 function delete_blood($blood_id) {
@@ -40,4 +41,5 @@ function delete_blood($blood_id) {
     $statement->execute();
     $statement->closeCursor();
 }
+
 ?>

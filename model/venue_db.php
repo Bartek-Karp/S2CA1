@@ -1,14 +1,15 @@
 <?php
+
 function get_venues() {
     global $db;
     $query = 'SELECT * FROM venues
               ORDER BY venueID';
     $statement = $db->prepare($query);
     $statement->execute();
-    return $statement; 
+    return $statement;
 }
-    
-    function get_venue($venue_id) {
+
+function get_venue($venue_id) {
     global $db;
     $query = 'SELECT * FROM venues
               WHERE venueID = :venue_id';
@@ -17,18 +18,18 @@ function get_venues() {
     $statement->execute();
     $venue = $statement->fetch();
     $statement->closeCursor();
-    return $venue; 
+    return $venue;
 }
 
 function get_location($venue_id) {
     global $db;
     $query = 'SELECT * FROM venues
-              WHERE venueID = :venue_id';    
+              WHERE venueID = :venue_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':venue_id', $venue_id);
-    $statement->execute();    
+    $statement->execute();
     $venue = $statement->fetch();
-    $statement->closeCursor();    
+    $statement->closeCursor();
     $location = $venue['location'];
     return $location;
 }
@@ -42,7 +43,7 @@ function add_venue($location, $time, $date) {
     $statement->bindValue(':time', $time);
     $statement->bindValue(':date', $date);
     $statement->execute();
-    $statement->closeCursor();    
+    $statement->closeCursor();
 }
 
 function delete_venue($venue_id) {
@@ -55,8 +56,7 @@ function delete_venue($venue_id) {
     $statement->closeCursor();
 }
 
-function update_venue($venue_id, $location, $date, $time)
-{
+function update_venue($venue_id, $location, $date, $time) {
     global $db;
     $query = 'UPDATE venues
               SET location = :location,
@@ -71,4 +71,5 @@ function update_venue($venue_id, $location, $date, $time)
     $statement->execute();
     $statement->closeCursor();
 }
+
 ?>
