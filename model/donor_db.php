@@ -26,7 +26,7 @@ function get_donors_by_blood($blood_id) {
 function get_donor($donor_id) {
     global $db;
     $query = 'SELECT * FROM donors
-              WHERE donorID = donor_id';
+              WHERE donorID = :donor_id';
     $statement = $db->prepare($query);
     $statement->bindValue(":donor_id", $donor_id);
     $statement->execute();
@@ -60,7 +60,29 @@ function add_donor($blood_id, $name, $number, $age) {
     $statement->closeCursor();
 }
 //
-function update_donor($donor_id, $blood_id, $name, $number, $age) {
+//function update_donor($donor_id, $blood_id, $name, $number, $age) {
+//    global $db;
+//    $query = 'UPDATE donors
+//              SET bloodID = :blood_id,
+//                  fullName = :name,
+//                  phoneNumber = :number,
+//                  age = :age
+//               WHERE donorID = :donor_id';
+//    $statement = $db->prepare($query);
+//    $statement->bindValue(':blood_id', $blood_id);
+//    $statement->bindValue(':name', $name);
+//    $statement->bindValue(':number', $number);
+//    $statement->bindValue(':age', $age);
+//    $statement->bindValue(':donor_id', $donor_id);
+//    $statement->execute();
+//    $statement->closeCursor();
+//}
+
+
+
+
+function update_donor($donor_id, $blood_id, $name, $number, $age)
+{
     global $db;
     $query = 'UPDATE donors
               SET bloodID = :blood_id,
@@ -69,12 +91,32 @@ function update_donor($donor_id, $blood_id, $name, $number, $age) {
                   age = :age
                WHERE donorID = :donor_id';
     $statement = $db->prepare($query);
-    $statement->bindValue(':blood_id', $blood_id);
+    $statement->bindValue(':donor_id', $donor_id);
     $statement->bindValue(':name', $name);
     $statement->bindValue(':number', $number);
     $statement->bindValue(':age', $age);
-    $statement->bindValue(':donor_id', $donor_id);
+    $statement->bindValue(':blood_id', $blood_id);
     $statement->execute();
     $statement->closeCursor();
 }
+
+
 ?>
+
+<!--function update_room($room_id, $category_id, $Rnum, $Rname, $Drate) {
+    global $db;
+    $query = 'UPDATE rooms
+              SET categoryID = :category_id,
+                  roomNum = :Rnum,
+                  roomName = :Rname,
+                  dalyRate = :Drate
+               WHERE RoomID = :room_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':category_id', $category_id);
+    $statement->bindValue(':Rnum', $Rnum);
+    $statement->bindValue(':Rname', $Rname);
+    $statement->bindValue(':Drate', $Drate);
+    $statement->bindValue(':room_id', $room_id);
+    $statement->execute();
+    $statement->closeCursor();
+}-->

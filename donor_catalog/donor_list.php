@@ -19,5 +19,7 @@
             <?php endforeach; ?>
         </ul>
     </section>
+    <br>
+        <p> <a href="../index.php">Menu</a></p>
 </main>
 <?php include '../view/footer.php'; ?>

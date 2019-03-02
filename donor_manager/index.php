@@ -23,43 +23,94 @@ if ($action == 'list_donors') {
     $blood_type = get_blood_type($blood_id);
     $bloodgroup = get_bloodgroup();
     $donors_blood = get_donors_by_blood($blood_id);
-    $donors = get_donors();
+//    $donors = get_donors();
 
+    
     // Display the donor list
     include('donor_list.php');
-} else if ($action == 'show_edit_form') {
-    $donor_id = filter_input(INPUT_POST, 'donor_id', 
-            FILTER_VALIDATE_INT);
-    if ($donor_id == NULL || $donor_id == FALSE) {
+} 
+//else if ($action == 'show_edit_form') {
+//    $donor_id = filter_input(INPUT_POST, 'donor_id', 
+//            FILTER_VALIDATE_INT);
+//    if ($donor_id == NULL || $donor_id == FALSE) {
+//        $error = "Missing or incorrect donor id.";
+//        include('../errors/error.php');
+//    } else { 
+//        $donor = get_donor($donor_id);
+//      
+//        include('donor_edit.php');
+//    }
+//} 
+//
+//
+//else if ($action == 'update_donor') {
+//    $donor_id = filter_input(INPUT_POST, 'donor_id', 
+//            FILTER_VALIDATE_INT);
+//    $blood_id = filter_input(INPUT_POST, 'blood_id', 
+//            FILTER_VALIDATE_INT);
+//    $name = filter_input(INPUT_POST, 'name');
+//    $number = filter_input(INPUT_POST, 'number');
+//    $age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
+//
+//    // Validate the inputs
+//    if ($donor_id == NULL || $donor_id == FALSE || $blood_id == NULL || 
+//            $blood_id == FALSE || $name == NULL || $number == NULL || 
+//            $age == NULL || $age == FALSE) {
+//        $error = "Invalid donor data. Check all fields and try again.";
+//        include('../errors/error.php');
+//    } else {
+//        update_donor($donor_id, $blood_id, $name, $number, $age);
+//
+//        // Display the Donor List page for the current blood type
+//        header("Location: .?blood_id=$blood_id");
+//    }
+//} 
+
+
+
+
+else if ($action == 'edit_form')
+{
+    $donor_id = filter_input(INPUT_POST, 'donor_id', FILTER_VALIDATE_INT);
+    if ($donor_id == NULL || $donor_id == FALSE)
+    {
         $error = "Missing or incorrect donor id.";
         include('../errors/error.php');
-    } else { 
-        $donor = get_donor($donor_id);
-        $bloodgroup = get_bloodgroup();
+    }
+    else
+    {
+        $donor_id = get_donor($donor_id);
         include('donor_edit.php');
     }
-} else if ($action == 'update_donor') {
-    $donor_id = filter_input(INPUT_POST, 'donor_id', 
-            FILTER_VALIDATE_INT);
-    $blood_id = filter_input(INPUT_POST, 'blood_id', 
-            FILTER_VALIDATE_INT);
+}
+else if ($action == 'update_donor')
+{
+    $donor_id = filter_input(INPUT_POST, 'donor_id', FILTER_VALIDATE_INT);
+    $blood_id = filter_input(INPUT_POST, 'blood_id', FILTER_VALIDATE_INT);
     $name = filter_input(INPUT_POST, 'name');
-    $number = filter_input(INPUT_POST, 'number');
-    $age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
+     $number = filter_input(INPUT_POST, 'number', FILTER_VALIDATE_INT);
+      $age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
 
     // Validate the inputs
-    if ($donor_id == NULL || $donor_id == FALSE || $blood_id == NULL || 
-            $blood_id == FALSE || $name == NULL || $number == NULL || 
-            $age == NULL || age == FALSE) {
+    if ($donor_id == NULL || $donor_id == FALSE || $blood_id == NULL ||
+            $blood_id == FALSE || $name == NULL || $number == NULL || $age == NULL)
+    {
         $error = "Invalid donor data. Check all fields and try again.";
         include('../errors/error.php');
-    } else {
+    }
+    else
+    {
         update_donor($donor_id, $blood_id, $name, $number, $age);
 
-        // Display the Donor List page for the current blood type
+        // Display the permission List page for the current role
         header("Location: .?blood_id=$blood_id");
     }
-} else if ($action == 'delete_donor') {
+}
+
+
+
+
+else if ($action == 'delete_donor') {
     $donor_id = filter_input(INPUT_POST, 'donor_id', 
             FILTER_VALIDATE_INT);
     $blood_id = filter_input(INPUT_POST, 'blood_id', 

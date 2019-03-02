@@ -35,6 +35,8 @@
     </form>
 
     <p><a href="index.php?action=list_donors">List Donors</a></p>
+    <br>
+        <p> <a href="../index.php">Menu</a></p>
 
 </main>
 <?php include '../view/footer.php'; ?>

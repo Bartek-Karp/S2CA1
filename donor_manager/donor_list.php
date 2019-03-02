@@ -27,7 +27,7 @@
                     <td class="right"><?php echo $donor['age']; ?></td>
                     <td><form action="." method="post">
                             <input type="hidden" name="action"
-                                   value="show_edit_form">
+                                   value="edit_form">
                             <input type="hidden" name="donor_id"
                                    value="<?php echo $donor['donorID']; ?>">
                             <input type="hidden" name="blood_id"
@@ -48,6 +48,9 @@
         </table>
         <p><a href="?action=show_add_form">Add Donor</a></p>
         <p><a href="?action=list_bloodgroup">List Blood Groups</a></p>
+        <br>
+        <p> <a href="../index.php">Menu</a></p>
+        
     </section>
 
 </main>

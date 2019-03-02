@@ -1,25 +1,46 @@
 <?php include '../view/header.php'; ?>
 <main>
-    <aside>
-        <!-- display a list of blood types -->
-        <h2>Venues</h2>
-        <?php include '../view/blood_nav.php'; ?>        
-    </aside>
+
+    <h1>Venues</h1>
     <section>
-        <h1><?php echo $venues; ?></h1>
-        <ul class="nav">
-            <!-- display links for donors in selected blood group -->
+        <!-- display a table of donors -->
+        <center><table>
+            <tr>
+                <th>Location</th>
+                <th>Date</th>
+                <th class="right">Time</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
             <?php foreach ($venues as $venue) : ?>
-            <li>
-                <a href="?action=view_venue&amp;venue_id=<?php 
-                          echo $venue['venueID']; ?>">
-                    <?php echo $venue['location']; ?>
-                     <?php echo $venue['date']; ?>
-                     <?php echo $venue['time']; ?>
-                </a>
-            </li>
+                <tr>
+                    <td><?php echo $venue['location']; ?></td>
+                    <td><?php echo $venue['date']; ?></td>
+                    <td class="right"><?php echo $venue['time']; ?></td>
+                    <td><form action="." method="post">
+                            <input type="hidden" name="action"
+                                   value="show_edit_form">
+                            <input type="hidden" name="venue_id"
+                                   value="<?php echo $venue['venueID']; ?>">
+                            <input type="submit" value="Edit">
+                        </form></td>
+                    <td><form action="." method="post">
+                            <input type="hidden" name="action"
+                                   value="delete_venue">
+                            <input type="hidden" name="venue_id"
+                                   value="<?php echo $venue['venueID']; ?>">
+                            <input type="hidden" name="venue_id"
+                                   value="<?php echo $venue['venueID']; ?>">
+                            <input type="submit" value="Delete">
+                        </form></td>
+                </tr>
             <?php endforeach; ?>
-        </ul>
+            </table></center>
+        <p><a href="?action=show_add_form">Add Venue</a></p>
+        <br>
+        <p> <a href="../index.php">Menu</a></p>
+        
     </section>
+
 </main>
 <?php include '../view/footer.php'; ?>

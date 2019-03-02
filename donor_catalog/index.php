@@ -35,20 +35,7 @@ if ($action == 'list_donors') {
         // Get donor data
         $name = $donor['fullName'];
         $number = $donor['phoneNumber'];
-        $age = $age['age'];
-
-        // Calculate discounts
-        $discount_percent = 30;  // 30% off for all web orders
-        $discount_amount = round($list_price * ($discount_percent/100.0), 2);
-        $unit_price = $list_price - $discount_amount;
-
-        // Format the calculations
-        $discount_amount_f = number_format($discount_amount, 2);
-        $unit_price_f = number_format($unit_price, 2);
-
-        // Get image URL and alternate text
-        $image_filename = '../images/' . $code . '.png';
-        $image_alt = 'Image: ' . $code . '.png';
+        $age = $donor['age'];
 
         include('donor_view.php');
     }

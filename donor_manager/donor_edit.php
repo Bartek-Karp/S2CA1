@@ -5,15 +5,12 @@
 
         <input type="hidden" name="action" value="update_donor">
 
-        <label>Blood Type:</label>
-        <select name="blood_id">
-            <?php foreach ($bloodgroup as $blood) : ?>
-                <option value="<?php echo $blood['bloodID']; ?>">
-                    <?php echo $blood['bloodType']; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <br>
+        <input type="hidden" name="donor_id"
+               value="<?php echo $donor['donorID']; ?>">
+
+        <label>Blood ID:</label>
+        <input type="input" name="blood_id"
+               value="<?php echo $donor['bloodID']; ?>">
 
         <label>Full Name:</label>
         <input type="input" name="name"
@@ -34,7 +31,11 @@
         <input type="submit" value="Save Changes">
         <br>
     </form>
-    <p><a href="index.php?action=list_donors">View Donor List</a></p>
+    <p><a href="index.php?action=list_donor">View Donor List</a></p>
 
 </main>
 <?php include '../view/footer.php'; ?>
+
+
+
+
